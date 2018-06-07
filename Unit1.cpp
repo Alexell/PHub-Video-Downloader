@@ -1,13 +1,15 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
 
 #include "Unit1.h"
+#include "System.Math.hpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TMainForm *MainForm;
+float prog, cur, full;
 TStringList * Sheet = new TStringList();
 UnicodeString Links, Link240, Link480, Link720;
 //---------------------------------------------------------------------------
@@ -69,7 +71,7 @@ void __fastcall TMainForm::AboutLinkClick(TObject *Sender)
 
 void __fastcall TMainForm::SourceLinkClick(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, L"https://github.com/alexell/", NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(Handle, NULL, L"https://github.com/Alexell/PHub-Video-Downloader", NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -117,6 +119,8 @@ void __fastcall TMainForm::WebWorkBegin(TObject *ASender, TWorkMode AWorkMode, _
 {
 	ProgressBar->Max=AWorkCountMax;
 	ProgressBar->Position=0;
+	ProgLabel->Caption="0 %";
+    SizeLabel->Font->Style=TFontStyles() >> fsBold;
 }
 //---------------------------------------------------------------------------
 
@@ -124,13 +128,34 @@ void __fastcall TMainForm::WebWork(TObject *ASender, TWorkMode AWorkMode, __int6
 
 {
 	ProgressBar->Position=AWorkCount;
-	Application->ProcessMessages();
+	cur=AWorkCount;
+	full=ProgressBar->Max;
+	if(full>0)
+	{
+		prog=int(10.*cur/full*10);
+		ProgLabel->Caption = FloatToStr(prog)+" %";
+	}
+	cur=cur/1048576;
+	full=full/1048576;
+	SizeLabel->Caption = "Downloaded: "+FloatToStrF(cur, ffGeneral, 4, 2)+" / "+FloatToStrF(full, ffGeneral, 4, 2)+" Mb";
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::WebWorkEnd(TObject *ASender, TWorkMode AWorkMode)
 {
-	ProgressBar->Position=0;
+	SizeLabel->Font->Style=TFontStyles() << fsBold;
+	if(cur==full)
+		SizeLabel->Caption="Download Complete";
+	else
+		SizeLabel->Caption="Download Canceled";
+
+	cur=0; full=0; prog=0;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::ExBtnClick(TObject *Sender)
+{
+	Web->Disconnect();
 }
 //---------------------------------------------------------------------------
 

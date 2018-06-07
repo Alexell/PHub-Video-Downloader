@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'MainForm'
-  ClientHeight = 408
+  ClientHeight = 434
   ClientWidth = 606
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,6 +13,24 @@ object MainForm: TMainForm
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object ProgLabel: TLabel
+    Left = 554
+    Top = 361
+    Width = 3
+    Height = 13
+  end
+  object SizeLabel: TLabel
+    Left = 8
+    Top = 383
+    Width = 450
+    Height = 13
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object LinkEdit: TLabeledEdit
     Left = 8
     Top = 59
@@ -22,7 +40,6 @@ object MainForm: TMainForm
     EditLabel.Height = 13
     EditLabel.Caption = 'Pornhub Video URL:'
     TabOrder = 0
-    Text = 'https://www.pornhub.com/view_video.php?viewkey=ph5b030ffd39438'
   end
   object BtnGet: TButton
     Left = 391
@@ -30,6 +47,12 @@ object MainForm: TMainForm
     Width = 75
     Height = 25
     Caption = 'Get Links'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 1
     OnClick = BtnGetClick
   end
@@ -74,7 +97,7 @@ object MainForm: TMainForm
   object AboutPanel: TPanel
     Left = 8
     Top = 8
-    Width = 540
+    Width = 585
     Height = 30
     BevelInner = bvLowered
     ParentShowHint = False
@@ -138,10 +161,10 @@ object MainForm: TMainForm
     object SourceLink: TLabel
       Left = 334
       Top = 8
-      Width = 128
+      Width = 245
       Height = 13
       Cursor = crHandPoint
-      Caption = 'https://github.com/alexell/'
+      Caption = 'https://github.com/Alexell/PHub-Video-Downloader'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -11
@@ -166,6 +189,21 @@ object MainForm: TMainForm
     Width = 540
     Height = 17
     TabOrder = 5
+  end
+  object ExBtn: TButton
+    Left = 239
+    Top = 402
+    Width = 113
+    Height = 25
+    Caption = 'Cancel Download'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 6
+    OnClick = ExBtnClick
   end
   object Web: TIdHTTP
     IOHandler = IndySSL
@@ -204,5 +242,9 @@ object MainForm: TMainForm
     Filter = 'MP4|.mp4'
     Left = 520
     Top = 32
+  end
+  object AntiFreeze: TIdAntiFreeze
+    Left = 552
+    Top = 96
   end
 end

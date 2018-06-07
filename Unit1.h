@@ -20,6 +20,8 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ComCtrls.hpp>
+#include <IdAntiFreeze.hpp>
+#include <IdAntiFreezeBase.hpp>
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
@@ -41,6 +43,10 @@ __published:	// IDE-managed Components
 	TLabel *SourceLink;
 	TMemo *Memo;
 	TProgressBar *ProgressBar;
+	TIdAntiFreeze *AntiFreeze;
+	TLabel *ProgLabel;
+	TLabel *SizeLabel;
+	TButton *ExBtn;
 	void __fastcall BtnGetClick(TObject *Sender);
 	void __fastcall AboutLinkClick(TObject *Sender);
 	void __fastcall SourceLinkClick(TObject *Sender);
@@ -50,6 +56,7 @@ __published:	// IDE-managed Components
 	void __fastcall WebWorkEnd(TObject *ASender, TWorkMode AWorkMode);
 	void __fastcall Btn480Click(TObject *Sender);
 	void __fastcall Btn720Click(TObject *Sender);
+	void __fastcall ExBtnClick(TObject *Sender);
 
 
 private:	// User declarations
