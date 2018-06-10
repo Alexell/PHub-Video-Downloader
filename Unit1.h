@@ -22,6 +22,9 @@
 #include <Vcl.ComCtrls.hpp>
 #include <IdAntiFreeze.hpp>
 #include <IdAntiFreezeBase.hpp>
+#include <Vcl.Buttons.hpp>
+#include <Vcl.Graphics.hpp>
+#include <Vcl.Imaging.jpeg.hpp>
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
@@ -34,20 +37,12 @@ __published:	// IDE-managed Components
 	TButton *Btn480;
 	TButton *Btn720;
 	TSaveDialog *SaveDialog;
-	TPanel *AboutPanel;
-	TLabel *AboutLabel1;
-	TLabel *AboutLabel2;
-	TLabel *AboutLink;
-	TLabel *AboutLabel3;
-	TLabel *SourceLink;
-	TMemo *Memo;
 	TProgressBar *ProgressBar;
 	TIdAntiFreeze *AntiFreeze;
 	TLabel *ProgLabel;
 	TLabel *SizeLabel;
 	TButton *ExBtn;
-	void __fastcall AboutLinkClick(TObject *Sender);
-	void __fastcall SourceLinkClick(TObject *Sender);
+	TImage *AboutBtn;
 	void __fastcall Btn240Click(TObject *Sender);
 	void __fastcall WebWorkBegin(TObject *ASender, TWorkMode AWorkMode, __int64 AWorkCountMax);
 	void __fastcall WebWork(TObject *ASender, TWorkMode AWorkMode, __int64 AWorkCount);
@@ -56,6 +51,7 @@ __published:	// IDE-managed Components
 	void __fastcall Btn720Click(TObject *Sender);
 	void __fastcall ExBtnClick(TObject *Sender);
 	void __fastcall LinkEditKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall AboutBtnClick(TObject *Sender);
 
 
 

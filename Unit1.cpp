@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "Unit1.h"
+#include "Unit2.h"
 #include "System.Math.hpp"
 #include "Clipbrd.hpp"
 //---------------------------------------------------------------------------
@@ -17,7 +18,8 @@ UnicodeString Links, Link240, Link480, Link720;
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 	: TForm(Owner)
 {
-	MainForm->Height=130;
+	MainForm->Caption=Application->Title;
+	MainForm->Height=80;
 	MainBox->Height=20;
 }
 //---------------------------------------------------------------------------
@@ -32,24 +34,12 @@ String TMainForm::GetLink(String Str, String Qa)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::AboutLinkClick(TObject *Sender)
-{
-	ShellExecute(Handle, NULL, L"https://alexell.ru", NULL, NULL, SW_SHOWNORMAL);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::SourceLinkClick(TObject *Sender)
-{
-	ShellExecute(Handle, NULL, L"https://github.com/Alexell/PHub-Video-Downloader", NULL, NULL, SW_SHOWNORMAL);
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TMainForm::Btn240Click(TObject *Sender)
 {
     SaveDialog->FileName="video_240p";
 	if(SaveDialog->Execute())
 	{
-		MainForm->Height=473;
+		MainForm->Height=238;
 		TFileStream* Stream = new TFileStream(SaveDialog->FileName, fmCreate|fmOpenWrite);
 		Web->Get(Link240, Stream);
 		delete Stream;
@@ -63,7 +53,7 @@ void __fastcall TMainForm::Btn480Click(TObject *Sender)
 	SaveDialog->FileName="video_480p";
 	if(SaveDialog->Execute())
 	{
-		MainForm->Height=473;
+		MainForm->Height=238;
 		TFileStream* Stream = new TFileStream(SaveDialog->FileName, fmCreate|fmOpenWrite);
 		Web->Get(Link480, Stream);
 		delete Stream;
@@ -77,7 +67,7 @@ void __fastcall TMainForm::Btn720Click(TObject *Sender)
 	SaveDialog->FileName="video_720p";
 	if(SaveDialog->Execute())
 	{
-        MainForm->Height=473;
+        MainForm->Height=238;
 		TFileStream* Stream = new TFileStream(SaveDialog->FileName, fmCreate|fmOpenWrite);
 		Web->Get(Link720, Stream);
 		delete Stream;
@@ -144,7 +134,7 @@ void __fastcall TMainForm::LinkEditKeyDown(TObject *Sender, WORD &Key, TShiftSta
 		if(Clipboard->HasFormat(CF_TEXT))
 		{
 			LinkEdit->Enabled=false;
-			MainForm->Height=160;
+			MainForm->Height=108;
 			MainBox->Height=20;
 			MainBox->Visible=true;
 			MainBox->Caption="Getting available videos...";
@@ -178,13 +168,12 @@ void __fastcall TMainForm::LinkEditKeyDown(TObject *Sender, WORD &Key, TShiftSta
 					Link240=GetLink(Links,"240");
 					Btn240->Enabled=true;
 				}
-				MainForm->Height=207;
+				MainForm->Height=150;
 				MainBox->Height=65;
 				MainBox->Caption="Available Downloads:";
 				Btn720->Visible=true;
 				Btn480->Visible=true;
 				Btn240->Visible=true;
-				Memo->Text=Link240+"\n\n"+Link480+"\n\n"+Link720;
 			}
 			else
 			{
@@ -193,12 +182,18 @@ void __fastcall TMainForm::LinkEditKeyDown(TObject *Sender, WORD &Key, TShiftSta
 				LinkEdit->Enabled=true;
 				MainBox->Height=20;
 				MainBox->Visible=false;
-				MainForm->Height=130;
+				MainForm->Height=80;
 			}
 		}
 		Clipboard->Clear();
 		delete Clipboard;
 	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::AboutBtnClick(TObject *Sender)
+{
+	AboutForm->Visible=true;
 }
 //---------------------------------------------------------------------------
 
