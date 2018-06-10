@@ -10,6 +10,7 @@ object MainForm: TMainForm
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
@@ -36,11 +37,11 @@ object MainForm: TMainForm
     Top = 59
     Width = 377
     Height = 21
-    EditLabel.Width = 148
+    EditLabel.Width = 175
     EditLabel.Height = 13
-    EditLabel.Caption = 'Pornhub / RedTube Video URL:'
+    EditLabel.Caption = 'Pornhub / RedTube Video Page URL:'
     TabOrder = 0
-    OnChange = LinkEditChange
+    OnKeyDown = LinkEditKeyDown
   end
   object MainBox: TGroupBox
     Left = 8
@@ -49,6 +50,7 @@ object MainForm: TMainForm
     Height = 65
     Caption = 'Available Downloads:'
     TabOrder = 1
+    Visible = False
     object Btn240: TButton
       Left = 16
       Top = 24

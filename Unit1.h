@@ -55,7 +55,9 @@ __published:	// IDE-managed Components
 	void __fastcall Btn480Click(TObject *Sender);
 	void __fastcall Btn720Click(TObject *Sender);
 	void __fastcall ExBtnClick(TObject *Sender);
-	void __fastcall LinkEditChange(TObject *Sender);
+	void __fastcall LinkEditKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+
+
 
 
 private:	// User declarations
