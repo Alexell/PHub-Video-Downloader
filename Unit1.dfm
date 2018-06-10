@@ -22,7 +22,7 @@ object MainForm: TMainForm
   object SizeLabel: TLabel
     Left = 8
     Top = 383
-    Width = 450
+    Width = 3
     Height = 13
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -36,25 +36,11 @@ object MainForm: TMainForm
     Top = 59
     Width = 377
     Height = 21
-    EditLabel.Width = 95
+    EditLabel.Width = 148
     EditLabel.Height = 13
-    EditLabel.Caption = 'Pornhub Video URL:'
+    EditLabel.Caption = 'Pornhub / RedTube Video URL:'
     TabOrder = 0
-  end
-  object BtnGet: TButton
-    Left = 391
-    Top = 57
-    Width = 75
-    Height = 25
-    Caption = 'Get Links'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 1
-    OnClick = BtnGetClick
+    OnChange = LinkEditChange
   end
   object MainBox: TGroupBox
     Left = 8
@@ -62,7 +48,7 @@ object MainForm: TMainForm
     Width = 377
     Height = 65
     Caption = 'Available Downloads:'
-    TabOrder = 2
+    TabOrder = 1
     object Btn240: TButton
       Left = 16
       Top = 24
@@ -71,6 +57,7 @@ object MainForm: TMainForm
       Caption = '240p'
       Enabled = False
       TabOrder = 0
+      Visible = False
       OnClick = Btn240Click
     end
     object Btn480: TButton
@@ -81,6 +68,7 @@ object MainForm: TMainForm
       Caption = '480p'
       Enabled = False
       TabOrder = 1
+      Visible = False
       OnClick = Btn480Click
     end
     object Btn720: TButton
@@ -91,6 +79,7 @@ object MainForm: TMainForm
       Caption = '720p'
       Enabled = False
       TabOrder = 2
+      Visible = False
       OnClick = Btn720Click
     end
   end
@@ -103,7 +92,7 @@ object MainForm: TMainForm
     ParentShowHint = False
     ShowCaption = False
     ShowHint = False
-    TabOrder = 3
+    TabOrder = 2
     object AboutLabel1: TLabel
       Left = 8
       Top = 8
@@ -181,14 +170,14 @@ object MainForm: TMainForm
     Height = 178
     Lines.Strings = (
       'Memo')
-    TabOrder = 4
+    TabOrder = 3
   end
   object ProgressBar: TProgressBar
     Left = 8
     Top = 360
     Width = 540
     Height = 17
-    TabOrder = 5
+    TabOrder = 4
   end
   object ExBtn: TButton
     Left = 239
@@ -202,7 +191,7 @@ object MainForm: TMainForm
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 5
     OnClick = ExBtnClick
   end
   object Web: TIdHTTP

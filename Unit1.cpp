@@ -28,40 +28,6 @@ String TMainForm::GetLink(String Str, String Qa)
 	return Temp2;
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::BtnGetClick(TObject *Sender)
-{
-	Sheet->Text=Web->Get(LinkEdit->Text);
-	for (int i = 0; i < Sheet->Count; i++)
-	{
-		if(Sheet->Strings[i].Pos("\"quality\":\"480\""))
-		{
-			Links=Sheet->Strings[i];
-			break;
-		}
-	}
-
-	if(Links.Pos("\"quality\":\"720\""))
-	{
-		Link720=GetLink(Links,"720");
-		Btn720->Enabled=true;
-	}
-
-	if(Links.Pos("\"quality\":\"480\""))
-	{
-		Link480=GetLink(Links,"480");
-		Btn480->Enabled=true;
-	}
-
-	if(Links.Pos("\"quality\":\"240\""))
-	{
-		Link240=GetLink(Links,"240");
-        Btn240->Enabled=true;
-	}
-	MainBox->Visible=true;
-	//MainForm->Height=210;
-	Memo->Text=Link240+"\n\n"+Link480+"\n\n"+Link720;
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TMainForm::AboutLinkClick(TObject *Sender)
 {
@@ -145,7 +111,10 @@ void __fastcall TMainForm::WebWorkEnd(TObject *ASender, TWorkMode AWorkMode)
 {
 	SizeLabel->Font->Style=TFontStyles() << fsBold;
 	if(cur==full)
+	{
+		LinkEdit->Enabled=true;
 		SizeLabel->Caption="Download Complete";
+	}
 	else
 		SizeLabel->Caption="Download Canceled";
 
@@ -156,6 +125,51 @@ void __fastcall TMainForm::WebWorkEnd(TObject *ASender, TWorkMode AWorkMode)
 void __fastcall TMainForm::ExBtnClick(TObject *Sender)
 {
 	Web->Disconnect();
+    LinkEdit->Enabled=true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::LinkEditChange(TObject *Sender)
+{
+    LinkEdit->Enabled=false;
+	MainBox->Height=20;
+	MainBox->Visible=true;
+	MainBox->Caption="Getting available videos...";
+	Sheet->Text=Web->Get(LinkEdit->Text);
+	Web->Disconnect();
+	for (int i = 0; i < Sheet->Count; i++)
+	{
+		if(Sheet->Strings[i].Pos("\"quality\":\"480\""))
+		{
+			Links=Sheet->Strings[i];
+			break;
+		}
+	}
+
+	if(Links.Pos("\"quality\":\"720\""))
+	{
+		Link720=GetLink(Links,"720");
+		Btn720->Enabled=true;
+	}
+
+	if(Links.Pos("\"quality\":\"480\""))
+	{
+		Link480=GetLink(Links,"480");
+		Btn480->Enabled=true;
+	}
+
+	if(Links.Pos("\"quality\":\"240\""))
+	{
+		Link240=GetLink(Links,"240");
+		Btn240->Enabled=true;
+	}
+	Btn720->Visible=true;
+	Btn480->Visible=true;
+	Btn240->Visible=true;
+	MainBox->Caption="Available Downloads:";
+	MainBox->Height=65;
+	//MainForm->Height=210;
+	Memo->Text=Link240+"\n\n"+Link480+"\n\n"+Link720;
 }
 //---------------------------------------------------------------------------
 

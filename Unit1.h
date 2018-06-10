@@ -29,7 +29,6 @@ __published:	// IDE-managed Components
 	TLabeledEdit *LinkEdit;
 	TIdHTTP *Web;
 	TIdSSLIOHandlerSocketOpenSSL *IndySSL;
-	TButton *BtnGet;
 	TGroupBox *MainBox;
 	TButton *Btn240;
 	TButton *Btn480;
@@ -47,7 +46,6 @@ __published:	// IDE-managed Components
 	TLabel *ProgLabel;
 	TLabel *SizeLabel;
 	TButton *ExBtn;
-	void __fastcall BtnGetClick(TObject *Sender);
 	void __fastcall AboutLinkClick(TObject *Sender);
 	void __fastcall SourceLinkClick(TObject *Sender);
 	void __fastcall Btn240Click(TObject *Sender);
@@ -57,6 +55,7 @@ __published:	// IDE-managed Components
 	void __fastcall Btn480Click(TObject *Sender);
 	void __fastcall Btn720Click(TObject *Sender);
 	void __fastcall ExBtnClick(TObject *Sender);
+	void __fastcall LinkEditChange(TObject *Sender);
 
 
 private:	// User declarations
