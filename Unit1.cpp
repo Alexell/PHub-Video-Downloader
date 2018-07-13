@@ -39,7 +39,7 @@ void __fastcall TMainForm::Btn240Click(TObject *Sender)
     SaveDialog->FileName="video_240p";
 	if(SaveDialog->Execute())
 	{
-		MainForm->Height=238;
+		MainForm->Height=247;
 		TFileStream* Stream = new TFileStream(SaveDialog->FileName, fmCreate|fmOpenWrite);
 		Web->Get(Link240, Stream);
 		delete Stream;
@@ -53,7 +53,7 @@ void __fastcall TMainForm::Btn480Click(TObject *Sender)
 	SaveDialog->FileName="video_480p";
 	if(SaveDialog->Execute())
 	{
-		MainForm->Height=238;
+		MainForm->Height=247;
 		TFileStream* Stream = new TFileStream(SaveDialog->FileName, fmCreate|fmOpenWrite);
 		Web->Get(Link480, Stream);
 		delete Stream;
@@ -67,7 +67,7 @@ void __fastcall TMainForm::Btn720Click(TObject *Sender)
 	SaveDialog->FileName="video_720p";
 	if(SaveDialog->Execute())
 	{
-        MainForm->Height=238;
+		MainForm->Height=247;
 		TFileStream* Stream = new TFileStream(SaveDialog->FileName, fmCreate|fmOpenWrite);
 		Web->Get(Link720, Stream);
 		delete Stream;

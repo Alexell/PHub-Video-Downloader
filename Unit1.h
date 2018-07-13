@@ -43,6 +43,7 @@ __published:	// IDE-managed Components
 	TLabel *SizeLabel;
 	TButton *ExBtn;
 	TImage *AboutBtn;
+	TLabel *Label1;
 	void __fastcall Btn240Click(TObject *Sender);
 	void __fastcall WebWorkBegin(TObject *ASender, TWorkMode AWorkMode, __int64 AWorkCountMax);
 	void __fastcall WebWork(TObject *ASender, TWorkMode AWorkMode, __int64 AWorkCount);
