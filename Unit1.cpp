@@ -138,7 +138,7 @@ void __fastcall TMainForm::LinkEditKeyDown(TObject *Sender, WORD &Key, TShiftSta
 			MainBox->Height=20;
 			MainBox->Visible=true;
 			MainBox->Caption="Getting available videos...";
-			if(Clipboard->AsText.Pos("https://www.pornhub.com/view_video.php") || Clipboard->AsText.Pos("https://www.redtube.com/"))
+			if(Clipboard->AsText.Pos("https://rt.pornhub.com/view_video.php") || Clipboard->AsText.Pos("https://www.pornhub.com/view_video.php") || Clipboard->AsText.Pos("https://ru.redtube.com/") || Clipboard->AsText.Pos("https://www.redtube.com/"))
 			{
 				Sheet->Text=Web->Get(Clipboard->AsText);
 				Web->Disconnect();
